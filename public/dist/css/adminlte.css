@@ -559,8 +559,6 @@ pre code {
   width: 100%;
   padding-right: 7.5px;
   padding-left: 7.5px;
-  margin-right: auto;
-  margin-left: auto;
 }
 
 @media (min-width: 576px) {
@@ -583,7 +581,7 @@ pre code {
 
 @media (min-width: 1200px) {
   .container, .container-sm, .container-md, .container-lg, .container-xl {
-    max-width: 1140px;
+    max-width: auto;
   }
 }
 
@@ -12266,7 +12264,7 @@ body.sidebar-collapse:not(.sidebar-mini-xs):not(.sidebar-mini-md):not(.sidebar-m
   .sidebar-mini-md .main-footer,
   .sidebar-mini-md .main-header {
     transition: margin-left 0.3s ease-in-out;
-    margin-left: 250px;
+    margin-left: 0;
   }
 }
 
@@ -12331,7 +12329,7 @@ body.sidebar-collapse:not(.sidebar-mini-xs):not(.sidebar-mini-md):not(.sidebar-m
   .sidebar-mini-xs .content-wrapper,
   .sidebar-mini-xs .main-footer,
   .sidebar-mini-xs .main-header {
-    margin-left: 4.6rem;
+    margin-left: 0;
   }
 }
 

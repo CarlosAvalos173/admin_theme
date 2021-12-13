@@ -13,7 +13,6 @@
   />
   <div id="main-menu" :class="[{'collapsed' : collapsed}, {'onmobile' : isOnMobile}]">
     <div class="container">
-      <img alt="Vue logo" src="./assets/logo.png">
       <router-view></router-view>
     </div>
   </div>
