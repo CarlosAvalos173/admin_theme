@@ -1,17 +1,21 @@
 <template>
-  <sidebar-menu 
+  <sidebar-menu
     v-model:collapsed="collapsed"
     :menu="menu"
     :theme="selectedTheme"
     :show-one-child="true"
     @update:collapsed="onToggleCollapse"
-    @item-click="onItemClick"/>
+    @item-click="onItemClick"
+  />
   <div
     v-if="isOnMobile && !collapsed"
     class="sidebar-overlay"
     @click="collapsed = true"
   />
-  <div id="main-menu" :class="[{'collapsed' : collapsed}, {'onmobile' : isOnMobile}]">
+  <div
+    id="main-menu"
+    :class="[{ collapsed: collapsed }, { onmobile: isOnMobile }]"
+  >
     <div class="container">
       <router-view></router-view>
     </div>
@@ -20,94 +24,93 @@
 
 <script>
 export default {
-  name: 'App',
-  mounted () {
-    this.onResize()
-    window.addEventListener('resize', this.onResize)
+  name: "App",
+  mounted() {
+    this.onResize();
+    window.addEventListener("resize", this.onResize);
   },
   methods: {
-    onToggleCollapse (collapsed) {
-      console.log('onToggleCollapse')
-      console.log(collapsed)
+    onToggleCollapse(collapsed) {
+      console.log("onToggleCollapse");
+      console.log(collapsed);
     },
-    onItemClick (event, item) {
-      console.log('onItemClick')
-      console.log(event)
-      console.log(item)
+    onItemClick(event, item) {
+      console.log("onItemClick");
+      console.log(event);
+      console.log(item);
     },
-    onResize () {
+    onResize() {
       if (window.innerWidth <= 767) {
-        this.isOnMobile = true
-        this.collapsed = true
+        this.isOnMobile = true;
+        this.collapsed = true;
       } else {
-        this.isOnMobile = false
-        this.collapsed = false
+        this.isOnMobile = false;
+        this.collapsed = false;
       }
-    }
+    },
   },
-  data(){
+  data() {
     return {
-      menu:[
+      menu: [
         {
-          header: 'Main Navigation',
-          hiddenOnCollapse: true
+          header: "Main Navigation",
+          hiddenOnCollapse: true,
         },
         {
-          href: '/',
-          title: 'Dashboard',
-          icon: 'fas fa-tachometer-alt'
+          href: "/",
+          title: "Dashboard",
+          icon: "fas fa-tachometer-alt",
         },
         {
-          href: '/charts',
-          title: 'Charts',
-          icon: 'fa fa-chart-area',
+          title: "Charts",
+          icon: "fa fa-chart-area",
           child: [
             {
-              href: '/charts/sublink',
-              title: 'Sub Link'
-            }
-          ]
+              href: "/blank",
+              title: "Sub Link",
+            },
+          ],
         },
         {
-          href: '/inventario',
-          title: 'Inventario',
-          icon: 'fas fa-boxes'
+          href: "/inventory",
+          title: "Inventario",
+          icon: "fas fa-boxes",
         },
         {
-          href: '/ventas',
-          title: 'Registro de Ventas',
-          icon: 'fas fa-cash-register'
+          href: "/ventas",
+          title: "Registro de Ventas",
+          icon: "fas fa-cash-register",
         },
         {
-          href: '/movimientos',
-          title:'Movimientos',
-          icon: 'fas fa-exchange-alt'
+          href: "/movimientos",
+          title: "Movimientos",
+          icon: "fas fa-exchange-alt",
         },
         {
-          href: '/clientes',
-          title: 'Clientes',
-          icon: 'fas fa-user'
+          href: "/clientes",
+          title: "Clientes",
+          icon: "fas fa-user",
         },
         {
-          href: '/proveedores',
-          title: 'Proveedores',
-          icon: 'fas fa-people-carry'
+          href: "/proveedores",
+          title: "Proveedores",
+          icon: "fas fa-people-carry",
         },
         {
-          href: '/cajeros',
-          title:'Cajeros ඞ',
-          icon: 'fas fa-users'
+          href: "/cajeros",
+          title: "Cajeros ඞ",
+          icon: "fas fa-users",
         },
         {
-          href: '/bulk_importer',
-          title:'Importador de Datos',
-          icon: 'fas fa-upload'
-        }
+          href: "/bulk_importer",
+          title: "Importador de Datos",
+          icon: "fas fa-upload",
+        },
       ],
       collapsed: false,
-    }
-  }
-}
+    };
+  },
+};
 </script>
 
 <style>
@@ -115,9 +118,9 @@ export default {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
+  /* text-align: center; */
   color: #2c3e50;
-  margin-top: 60px;
+  margin-top: 30px;
 }
 
 #main-menu {
@@ -130,9 +133,9 @@ export default {
 #main-menu.onmobile {
   padding-left: 65px;
 }
-
 .container {
-  max-width: 900px;
+  width: auto;
+  color: white;
 }
 </style>
 
