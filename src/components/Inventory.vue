@@ -27,7 +27,11 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Inventory table</h3>
+              <h3 class="card-title">Inventory table </h3>
+              <button class="btn btn-primary btn-sm" @click="addItem()" style="right-margin:20px" data-toggle="modal" data-target="#addItem">
+                <i class="fas fa-plus"></i>
+                Add Item
+              </button>
             </div>
             <div class="card-header">
               <div>
@@ -59,7 +63,7 @@
                       <td>{{ item.id }}</td>
                       <td>{{ item.name }}</td>
                       <td>{{ item.price }}</td>
-                      <td>{{ item.quantity }}</td>
+                      <td>{{ item.stock }}</td>
                       <td>{{ item.description }}</td>
                       <td class="align-middle">
                         <div class="btn-toolbar">
@@ -83,32 +87,93 @@
                     </tr>
                   </tbody>
                 </table>
+                
               </div>
             </div>
             <!-- /.card-body -->
           </div>
         </div>
+
+<!-- Definicion de Modal como formulario para captura de datos -->
+      <div class="modal fade" id="addItem" aria-labelledby="addItemLabel" tabindex="-1">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="addItemLabel">Añadir Objeto</h5>
+            </div>
+            <div class="modal-body">
+          
+            </div>
+          </div>        
+        </div>
+      
+      </div>
+
       </div>
     </div>
   </section>
+
 </template>
 
 
 <script>
+
+let url = 'http://localhost:8000/api/products';
+
 export default {
   name: "Inventory",
   data() {
     return {
       items: [
-        {
-          id: 1,
-          name: "Herramienta",
-          price: "8.00",
-          quantity: "123",
-          description: "Herramienta básica para la elaboración de productos",
-        },
+        // {
+        //   id: 1,
+        //   name: "Herramienta",
+        //   price: "8.00",
+        //   quantity: "123",
+        //   description: "Herramienta básica para la elaboración de productos",
+        // },
       ],
     };
+  },
+  created() {
+    this.getItems();
+  },
+  methods: {
+    getItems() {
+      this.axios.get(url).then((response) => {
+        this.items = response.data;
+      });
+    },
+    addItem() {
+      this.axios
+        .post(url, {
+          name: this.name,
+          price: this.price,
+          stock: this.stock,
+          description: this.description,
+        })
+        .then((response) => {
+          this.items.push(response.data);
+          this.name = "";
+          this.price = "";
+          this.stock = "";
+          this.description = "";
+        });
+        /*
+        addItem2: async function()
+    {
+      const{value: formvalues} = await this.$swal.fire({
+        title:'Añadir',
+        html:'',
+        focusConfirm: false,
+        showCancelButton: true,
+        confirmButtonText: 'Gurdar',
+        cancelButtonColor:'#3085d6',
+        preConfirm: () =>{
+          return[]
+        }
+      })*/
+    },
   },
 };
 </script>

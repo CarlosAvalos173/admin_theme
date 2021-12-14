@@ -1,10 +1,13 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 // const HelloWorld = require('../components/HelloWorld.vue');
+
+//Importacion de los componentes para rutas
 import HelloWorld from '../components/HelloWorld.vue'
 import Dashboard from '../components/Dashboard.vue'
 import Blank from '../components/Blank.vue'
 import Inventory from '../components/Inventory.vue'
+import Sales from '../components/Sales.vue'
 
 export const routes = [
     {
@@ -26,6 +29,11 @@ export const routes = [
         path: '/inventory',
         name: 'inventory',
         component: Inventory,
+    },
+    {
+        path: '/sales',
+        name: 'sales',
+        component: Sales,
     },
     {
         path: '/edit/:id',
