@@ -1,4 +1,7 @@
+set NODE_OPTIONS=--openssl-legacy-provider
 vue
 vue-cli
 vue-router
 axios
+bootstrap
+sweetalert2
