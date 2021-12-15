@@ -35,22 +35,24 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Monto</th>
-                      <th>Fecha</th>
+                      <th>RFC</th>
+                      <th>Nombre(s)</th>
+                      <th>Apellido(s)</th>
+                      <th>Dirección</th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="sale in sales" :key="sale.id">
-                      <td>{{ sale.id }}</td>
-                      <td>{{ sale.amount }}</td>
-                      <td>{{ sale.date }}</td>
+                    <tr v-for="client in clients" :key="client.RFC">
+                      <td>{{ client.RFC }}</td>
+                      <td>{{ client.name }}</td>
+                      <td>{{ client.last_name }}</td>
+                      <td>{{ client.address }}</td>
                       <td class="align-middle">
                         <div class="btn-toolbar">
                           <button
                             class="btn btn-primary btn-sm"
-                            v-on:click="showSaleDetails(sale)"
+                            v-on:click="showClientDetails(client)"
                           >
                             <i class="fas fa-ellipsis"></i>
                           </button>
@@ -71,27 +73,27 @@
 
 
 <script>
-let url = "http://localhost:8000/api/sales";
+let url = "http://localhost:8000/api/clients";
 let Swal = require("sweetalert2");
 
 export default {
-  name: "Sales",
+  name: "clients",
   data() {
     return {
-      sales: [],
+      clients: [],
     };
   },
   created() {
-    this.getSales();
+    this.getclients();
   },
   methods: {
-    getSales() {
+    getclients() {
       this.axios.get(url).then((response) => {
-        this.sales = response.data;
+        this.clients = response.data;
       });
     },
-    //Show sale details deberia mostrar los productos de esa venta? En caso de que si se tendra que hacer otra tabla probablemente. Implementacion del metodo queda pendiente
-    showSaleDetails(id) {
+    //Te amo miamor :3c. Implementacion de que me metas la verga pendiente.
+    showclientDetails(id) {
       Swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás revertir esto!",

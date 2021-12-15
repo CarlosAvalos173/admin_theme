@@ -77,27 +77,27 @@ export default {
           icon: "fas fa-boxes",
         },
         {
-          href: "/ventas",
+          href: "/sales",
           title: "Registro de Ventas",
           icon: "fas fa-cash-register",
         },
         {
-          href: "/movimientos",
+          href: "/movements",
           title: "Movimientos",
           icon: "fas fa-exchange-alt",
         },
         {
-          href: "/clientes",
+          href: "/clients",
           title: "Clientes",
           icon: "fas fa-user",
         },
         {
-          href: "/proveedores",
+          href: "/providers",
           title: "Proveedores",
           icon: "fas fa-people-carry",
         },
         {
-          href: "/cajeros",
+          href: "/cashiers",
           title: "Cajeros ඞ",
           icon: "fas fa-users",
         },

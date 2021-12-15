@@ -3,13 +3,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Registro de Ventas</h1>
+          <h1 class="m-0">Registro de Movimientos</h1>
         </div>
         <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <router-link class="breadcrumb-item" to="/">Home</router-link>
-            <li class="breadcrumb-item active">Registro de Ventas</li>
+            <li class="breadcrumb-item active">Registro de Movimientos</li>
           </ol>
         </div>
         <!-- /.col -->
@@ -27,7 +27,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Registro de Ventas</h3>
+              <h3 class="card-title">Movimientos</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -35,22 +35,21 @@
                 <table id="example2" class="table table-bordered table-hover">
                   <thead>
                     <tr>
-                      <th>ID</th>
-                      <th>Monto</th>
                       <th>Fecha</th>
-                      <th>Acciones</th>
+                      <th>Ingresos</th>
+                      <th>Egresos</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="sale in sales" :key="sale.id">
-                      <td>{{ sale.id }}</td>
-                      <td>{{ sale.amount }}</td>
-                      <td>{{ sale.date }}</td>
+                    <tr v-for="movement in movements" :key="movement.fecha">
+                      <td>{{ movement.fecha }}</td>
+                      <td>{{ movement.ingresos }}</td>
+                      <td>{{ movment.egresos }}</td>
                       <td class="align-middle">
                         <div class="btn-toolbar">
                           <button
                             class="btn btn-primary btn-sm"
-                            v-on:click="showSaleDetails(sale)"
+                            v-on:click="showMovementDetails(movement)"
                           >
                             <i class="fas fa-ellipsis"></i>
                           </button>
@@ -71,27 +70,27 @@
 
 
 <script>
-let url = "http://localhost:8000/api/sales";
+let url = "http://localhost:8000/api/movements";
 let Swal = require("sweetalert2");
 
 export default {
-  name: "Sales",
+  name: "Movements",
   data() {
     return {
-      sales: [],
+      movements: [],
     };
   },
   created() {
-    this.getSales();
+    this.getMovements();
   },
   methods: {
-    getSales() {
+    getMOvements() {
       this.axios.get(url).then((response) => {
-        this.sales = response.data;
+        this.movements = response.data;
       });
     },
-    //Show sale details deberia mostrar los productos de esa venta? En caso de que si se tendra que hacer otra tabla probablemente. Implementacion del metodo queda pendiente
-    showSaleDetails(id) {
+    //showMovementDetails probablemente tenga que mostrar de que las ventas que se hicieron en ese determinado dia o algo asi. Implementacion del metodo queda pendiente pa mañana
+    showMovementDetails(id) {
       Swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás revertir esto!",

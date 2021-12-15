@@ -3,13 +3,13 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0">Registro de Ventas</h1>
+          <h1 class="m-0">Cajeros ඞ</h1>
         </div>
         <!-- /.col -->
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <router-link class="breadcrumb-item" to="/">Home</router-link>
-            <li class="breadcrumb-item active">Registro de Ventas</li>
+            <li class="breadcrumb-item active">Cajeros ඞ</li>
           </ol>
         </div>
         <!-- /.col -->
@@ -27,7 +27,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Registro de Ventas</h3>
+              <h3 class="card-title">Cajeros ඞ</h3>
             </div>
             <!-- /.card-header -->
             <div class="card-body">
@@ -42,15 +42,15 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="sale in sales" :key="sale.id">
-                      <td>{{ sale.id }}</td>
-                      <td>{{ sale.amount }}</td>
-                      <td>{{ sale.date }}</td>
+                    <tr v-for="cashier in cashiers" :key="cashier.id">
+                      <td>{{ cashier.id }}</td>
+                      <td>{{ cashier.amount }}</td>
+                      <td>{{ cashier.date }}</td>
                       <td class="align-middle">
                         <div class="btn-toolbar">
                           <button
                             class="btn btn-primary btn-sm"
-                            v-on:click="showSaleDetails(sale)"
+                            v-on:click="showcashierDetails(cashier)"
                           >
                             <i class="fas fa-ellipsis"></i>
                           </button>
@@ -71,27 +71,27 @@
 
 
 <script>
-let url = "http://localhost:8000/api/sales";
+let url = "http://localhost:8000/api/cashiers";
 let Swal = require("sweetalert2");
 
 export default {
-  name: "Sales",
+  name: "cashiers",
   data() {
     return {
-      sales: [],
+      cashiers: [],
     };
   },
   created() {
-    this.getSales();
+    this.getcashiers();
   },
   methods: {
-    getSales() {
+    getcashiers() {
       this.axios.get(url).then((response) => {
-        this.sales = response.data;
+        this.cashiers = response.data;
       });
     },
-    //Show sale details deberia mostrar los productos de esa venta? En caso de que si se tendra que hacer otra tabla probablemente. Implementacion del metodo queda pendiente
-    showSaleDetails(id) {
+    //Show cashier details deberia mostrar los productos de esa venta? En caso de que si se tendra que hacer otra tabla probablemente. Implementacion del metodo queda pendiente
+    showcashierDetails(id) {
       Swal.fire({
         title: "¿Estás seguro?",
         text: "No podrás revertir esto!",

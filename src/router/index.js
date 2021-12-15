@@ -8,6 +8,10 @@ import Dashboard from '../components/Dashboard.vue'
 import Blank from '../components/Blank.vue'
 import Inventory from '../components/Inventory.vue'
 import Sales from '../components/Sales.vue'
+import Movements from '../components/Movements.vue'
+import Clients from '../components/Clients.vue'
+import Providers from '../components/Providers.vue'
+import Cashiers from '../components/Cashiers.vue'
 
 export const routes = [
     {
@@ -34,6 +38,26 @@ export const routes = [
         path: '/sales',
         name: 'sales',
         component: Sales,
+    },
+    {
+        path: '/movements',
+        name: 'movements',
+        component: Movements,
+    },
+    {
+        path: '/clients',
+        name: 'clients',
+        component: Clients,
+    },
+    {
+        path: '/providers',
+        name: 'providers',
+        component: Providers,
+    },
+    {
+        path: '/cashiers',
+        name: 'cashiers',
+        component: Cashiers,
     },
     {
         path: '/edit/:id',
