@@ -92,7 +92,6 @@ export default {
         this.clients = response.data;
       });
     },
-    //Te amo miamor :3c. Implementacion de que me metas la verga pendiente.
     showclientDetails(id) {
       Swal.fire({
         title: "¿Estás seguro?",
