@@ -91,7 +91,7 @@
 
 
 <script>
-let url = "http://localhost:8000/api/products";
+let url = "/products";
 let Swal = require("sweetalert2");
 
 export default {

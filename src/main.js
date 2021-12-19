@@ -9,6 +9,7 @@ import bootstrap from 'bootstrap'
 //import Swal from 'sweetalert2/dist/sweetalert2.js'
 // import sweetalert2 from 'sweetalert2'
 
+axios.defaults.baseURL = 'http://localhost:8000/api'
 
 const app = createApp(App)
 app.use(router)
